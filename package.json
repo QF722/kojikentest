@@ -1,4 +1,5 @@
 {
+  "homepage": "https://QF722.github.io/kojikentest",
   "name": "bluegreentest",
   "version": "0.0.0",
   "private": true,
@@ -9,8 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "deploy": "gh-pages -d dist",
-  "predeploy": "npm run build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.1",
