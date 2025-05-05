@@ -7,7 +7,7 @@
             <span class="background-white">  <i>Created by </i>Ryota  </span>
           </h1>
           <h1 v-else key="main" class="blue-green-test-title">
-            <span class="background-white">Is <i>your</i> blue <i>actually</i> blue?</span>
+            <span class="background-white"> <i>あなたの青は本当に青ですか?</i> <i> </i> </span>
           </h1>
         </transition>
       </div>
@@ -22,13 +22,13 @@
       </div>
       <div v-if="rounds < MAX_ROUNDS" class="blue-green-test-button-container three-buttons">
         <button @click="selectColor(leftButton)" class="blue-green-test-button grow-button">
-          This is {{ leftButton }}
+          これは {{ leftButton }}
         </button>
         <button @click="reset" class="blue-green-test-button mid-reset-button grow-button">
-          Reset
+          リセット
         </button>
         <button @click="selectColor(rightButton)" class="blue-green-test-button grow-button">
-          This is {{ rightButton }}
+          これは {{ rightButton }}
         </button>
       </div>
       <div v-else class="blue-green-test-button-container two-buttons">
@@ -36,42 +36,42 @@
           @click="showAbout = true"
           class="blue-green-test-button final-reset-button grow-button"
         >
-          About
+        このサイトついて
         </button>
         <button @click="reset" class="blue-green-test-button final-reset-button grow-button">
-          Reset
+          リセット
         </button>
       </div>
     </div>
     <div v-if="firstColorMislabeled" class="about-popup">
       <div class="about-content">
-        <h2>Whoops!</h2>
+        <h2>おっと！</h2>
         <p>
-          The first color is always very green or very blue. If you mislabel the first color, you
-          won't get an accurate result. This might indicate that you have a night filter or you made a mistake. Let's try again.
+          最初の色は必ず非常に緑か非常に青である。最初の色が間違っていると
+          正確な結果が得られません。これは、夜間モードを使っているか、間違えたことを示しているかもしれません。もう一度試してみましょう。
         </p>
-        <button @click="reset()" class="reset-button reset-button">Reset</button>
+        <button @click="reset()" class="reset-button reset-button">リセット</button>
       </div>
     </div>
     <div
-      v-if="rounds == MAX_ROUNDS && (allSame == 'blue' || allSame == 'green')"
+      v-if="rounds == MAX_ROUNDS && (allSame == '青' || allSame == '緑')"
       class="about-popup"
     >
       <div class="about-content">
-        <h2>Whoops!</h2>
+        <h2>おっと！</h2>
         <p>
           You labeled all the colors as {{ allSame }}. We can't infer a boundary based on your
           responses. Try again?
         </p>
-        <button @click="reset()" class="reset-button reset-button">Reset</button>
+        <button @click="reset()" class="reset-button reset-button">リセット</button>
       </div>
     </div>
     <div v-if="showAbout" class="about-popup">
       <div class="about-content">
         <button @click="showAbout = false" class="close-button">&times;</button>
-        <h2>About This Website</h2>
+        <h2>このウェブサイトについて</h2>
         <p>
-          People have different names for the colors they see.
+          言語によって、色の名前は異なります。
           <a href="https://en.wikipedia.org/wiki/Sapir%E2%80%93Whorf_hypothesis" target="_blank"
             >Language can affect how we memorize and name colors</a
           >. This is a color naming test designed to measure your personal blue-green boundary.
@@ -88,10 +88,10 @@
 
 
            
-        <h2>Who made this?</h2>
+        <h2>これを作ったのは誰?</h2>
         <p>
-          I'm Ryota Kawakami, a highschool student. I made this for my experiment about linguistic relativity
-          using <a href="https://www.skillupai.com/blog/ai-knowledge/about-claude-3-5-sonnet/">Claude 3.5 Sonnet</a> and countless open source libraries from github. 
+          川上涼大です。言語的相対論についての研究のためにこのサイトを作りました。
+           <a href="https://www.skillupai.com/blog/ai-knowledge/about-claude-3-5-sonnet/">Claude 3.5 Sonnet</a> and countless open source libraries from github. 
         </p>
         <h2> </h2>
         <p>
@@ -140,10 +140,10 @@ export default {
   },
   computed: {
     rightButton() {
-      return this.greenButtonRight ? 'green' : 'blue'
+      return this.greenButtonRight ? '緑です' : '青です'
     },
     leftButton() {
-      return this.greenButtonRight ? 'blue' : 'green'
+      return this.greenButtonRight ? '青です' : '緑です'
     },
     currentColor() {
       return `hsl(${this.currentHue}, 100%, 50%)`
@@ -178,9 +178,9 @@ export default {
       this.responses.push({ hue: this.currentHue, response: color })
 
       if (this.rounds === 0) {
-        if (color === 'blue' && this.currentHue < 180) {
+        if (color === '青です' && this.currentHue < 180) {
           this.firstColorMislabeled = true
-        } else if (color === 'green' && this.currentHue > 180) {
+        } else if (color === '緑です' && this.currentHue > 180) {
           this.firstColorMislabeled = true
         }
         if (this.firstColorMislabeled) {
@@ -191,7 +191,7 @@ export default {
       // Get the new probe value
       const { b, newProbe, polarity } = fitSigmoid(
         this.responses.map((r) => r.hue),
-        this.responses.map((r) => r.response === 'blue'),
+        this.responses.map((r) => r.response === '青です'),
         this.polarity,
         0.4
       )
@@ -200,8 +200,8 @@ export default {
       this.rounds++
       if (this.rounds === MAX_ROUNDS) {
         if (
-          this.responses.every((r) => r.response === 'blue') ||
-          this.responses.every((r) => r.response === 'green')
+          this.responses.every((r) => r.response === '青です') ||
+          this.responses.every((r) => r.response === '緑です')
         ) {
           this.allSame = this.responses[0].response
           return

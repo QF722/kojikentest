@@ -15,20 +15,20 @@
     </div>
     <div class="blue-green-test-result-text w-full mt-0 bg-white">
       <p class="result-text">
-        <i>Your</i> boundary is at hue {{ Math.round(userThreshold) }},
+        <i>あなたの</i>境界線は色相{{ Math.round(userThreshold) }},
         <span v-if="greenInclusive > 0.55">
-          bluer than {{ Math.round(greenInclusive * 100) }}% of the population. For <i>you</i>,
-          turquoise
+          人口の {{ Math.round(greenInclusive * 100) }}% よりも青い。 あなた<i>にとって</i>,
+          ターコイズ
           <span class="color-chip mr-1"></span>
-          is green.
+          は緑です。
         </span>
         <span v-else-if="greenInclusive < 0.45">
-          greener than {{ Math.round((1 - greenInclusive) * 100) }}% of the population. For
-          <i>you</i>, turquoise
+          人口より {{ Math.round((1 - greenInclusive) * 100) }}% 青を緑と間違える。 あなた
+          <i>にとって</i>,ターコイズ
           <span class="color-chip mr-1"></span>
-          is blue.
+          は青です。
         </span>
-        <span v-else> just like the population median. You're a true neutral. </span>
+        <span v-else> 人口の中央値と同じです。あなたは真の中立です</span>
       </p>
     </div>
   </div>
