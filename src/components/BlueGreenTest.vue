@@ -4,10 +4,10 @@
       <div v-if="!showResults" class="blue-green-test-content">
         <transition name="fade-up" mode="out-in">
           <h1 v-if="showInitialMessage" key="initial" class="blue-green-test-title">
-            <span class="background-white">Test <i>your</i> color categorization</span>
+            <span class="background-white">  <i>Created by </i>Ryota  </span>
           </h1>
           <h1 v-else key="main" class="blue-green-test-title">
-            <span class="background-white">Is <i>my</i> blue <i>your</i> blue?</span>
+            <span class="background-white">Is <i>your</i> blue <i>actually</i> blue?</span>
           </h1>
         </transition>
       </div>
@@ -48,8 +48,7 @@
         <h2>Whoops!</h2>
         <p>
           The first color is always very green or very blue. If you mislabel the first color, you
-          won't get accurate thresholds. This might indicate you have an unusually calibrated
-          screen, a night filter, or you made a mistake. Try again?
+          won't get an accurate result. This might indicate that you have a night filter or you made a mistake. Let's try again.
         </p>
         <button @click="reset()" class="reset-button reset-button">Reset</button>
       </div>
@@ -62,7 +61,7 @@
         <h2>Whoops!</h2>
         <p>
           You labeled all the colors as {{ allSame }}. We can't infer a boundary based on your
-          responses. This might indicate you have an unusually calibrated screen or a night filter.
+          responses. Try again?
         </p>
         <button @click="reset()" class="reset-button reset-button">Reset</button>
       </div>
@@ -77,91 +76,26 @@
             >Language can affect how we memorize and name colors</a
           >. This is a color naming test designed to measure your personal blue-green boundary.
         </p>
-        <h2>Test validity</h2>
+       
         <p>
-          <b><i>This website is for entertainment purposes only.</i></b>
+           
         </p>
+        <h2>How it works</h2>
         <p>
-          Color perception is tricky to measure--vision scientists use specialized calibrated
-          equipment to measure color perception. Graphic designers use physical color cards, such as
-          those
-          <a
-            href="https://www.npr.org/2024/07/19/1197961103/pantone-colors-lawrence-herbert-stuart-semple-standards"
-            >made by Pantone</a
-          >, so that they can communicate colors unambiguously. Here we use your monitor or phone to
-          test how you categorize colors, which is far from perfect, since your calibration may
-          differ from mine.
-        </p>
-        <p>
-          The validity of the inference is limited by the calibration of your monitor, ambient
-          lighting, and filters such as night mode. Despite these limitations, the results should
-          have good test-retest reliability <i>on the same device, in the same ambient light</i>,
-          which you can verify by taking the test multiple times. If you want to compare your
-          results with friends, use the same device in the same ambient light.
-        </p>
-        <p>
-          Getting outlier results doesn't mean there's anything wrong with your vision. It might
-          mean you have an idiosyncratic way of naming colors, or that your monitor and lighting is
-          unusual.
-        </p>
-        <h2>Technical Details</h2>
-        <p>
-          The test asks you to categorize colors sequentially. Colors are often represented in HSL
-          (hue, saturation, lightness) color space. Hue 120 is green, and hue 240 is blue. The test
-          focuses on blue-green hues between 150 and 210. On the web, HSL coordinates are translated
-          to
-          <a href="https://en.wikipedia.org/wiki/SRGB">sRGB color space</a>, the standard color
-          space of the web, which is not perceptually uniform. These sRGB values are translated
-          nonlinearly to your monitor through a gamma curve.
-        </p>
-        <p>
-          The test assumes that your responses between blue and green are represented by a sigmoid
-          curve. It sequentially fits that sigmoid curve to your responses:
+          This test uses an algorithm called <a href="https://github.com/learn-co-students/dsc-2-21-12-PE-MAP-online-ds-pt-112618">MAP estimation.</a> This algorithm cleverly chooses the next colors to show you, 
+          focusing on shades where you seem uncertain. To make the best results, it also randomly selects some colors and uses visual noise.
         </p>
 
-        <img src="@/assets/formula.svg" alt="Formula" />
-        <br />
-        <p>
-          This is equivalent to a logistic regression model. The test uses a maximum-a-posteriori
-          (MAP) estimation algorithm (specifically, a second order Newton method implemented in pure
-          JS, no calls to a backend) to fit the sigmoid curve to your responses, with a vague prior
-          on the scale and offset parameters. It uses the fitted curve to determine which color will
-          be presented next. It tries to be smart about where it samples new points, focusing on
-          regions where you're predicted to be intermediately confident in your responses. To
-          improve the validity of the results, it randomizes which points it samples, and uses a
-          noise mask to mitigate visual adaptation.
-        </p>
-        <p>
-          It's a curve fit, not a binary search. In theory, if you feel like you're guessing in the
-          middle shades, or even guessing incorrectly, that should be fine. If you're inconsistent
-          in the middle, the curve fit should be able to recover, although your estimated threshold
-          will have larger error bars.
-        </p>
 
-        <h2>Results</h2>
-        <p>
-          In early experiments, we found that people's responses cluster around 175, which
-          coincidentally is the same as the named HTML color turquoise
-          <span class="color-chip-turquoise mr-1"></span>. This is interesting, because the nominal
-          boundary between blue and green is at 180, the named HTML color cyan
-          <span class="color-chip-cyan mr-1"></span>. That means most people's boundaries are
-          shifted toward saying that cyan is blue.
-        </p>
-        <h2>What information does this website collect?</h2>
-        <p>
-          This website collects aggregate usage metrics to understand how many people use the site
-          and when. Since we received plenty of responses to the test, we have closed data
-          submission.
-        </p>
+           
         <h2>Who made this?</h2>
         <p>
-          I'm Patrick Mineault, a neuroscience and AI researcher. I made this as a side project
-          using Claude 3.5 Sonnet. I obtained a PhD in visual neuroscience from McGill in 2014. You
-          can read <a href="https://neuroai.science">my blog here</a>.
+          I'm Ryota Kawakami, a highschool student. I made this for my experiment about linguistic relativity
+          using <a href="https://www.skillupai.com/blog/ai-knowledge/about-claude-3-5-sonnet/">Claude 3.5 Sonnet</a> and countless open source libraries from github. 
         </p>
-        <h2>Can I make a version of this for my favorite color pair?</h2>
+        <h2> </h2>
         <p>
-          <a href="https://github.com/patrickmineault/ismyblue">Right this way to Github.</a>
+         
         </p>
       </div>
     </div>
@@ -349,7 +283,7 @@ export default {
 
 .about-content {
   background-color: white;
-  color: black;
+  color: rgb(0, 0, 0);
   padding: 2rem;
   border-radius: 8px;
   max-width: 80%;

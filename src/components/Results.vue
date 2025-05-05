@@ -246,7 +246,7 @@ svg {
   width: 1em;
   height: 1em;
   background-color: turquoise;
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 0.2em;
   margin-bottom: -0.2em;
 }
