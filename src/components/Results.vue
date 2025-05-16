@@ -4,12 +4,12 @@
       <svg ref="svg" class="w-full h-96"></svg>
       <div class="absolute top-0 left-0 p-1">
         <div class="blue-green-test-result-color">
-          <p class="result-text bg-white bg-opacity-70 p-1 rounded"><i>Your</i> green</p>
+          <p class="result-text bg-white bg-opacity-70 p-1 rounded"><i>あなたの</i> 緑</p>
         </div>
       </div>
       <div class="absolute top-0 right-0 p-1">
         <div class="blue-green-test-result-color">
-          <p class="result-text bg-white bg-opacity-70 p-1 rounded"><i>Your</i> blue</p>
+          <p class="result-text bg-white bg-opacity-70 p-1 rounded"><i>あなたの</i> 青</p>
         </div>
       </div>
     </div>

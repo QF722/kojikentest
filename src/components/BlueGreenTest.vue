@@ -4,7 +4,7 @@
       <div v-if="!showResults" class="blue-green-test-content">
         <transition name="fade-up" mode="out-in">
           <h1 v-if="showInitialMessage" key="initial" class="blue-green-test-title">
-            <span class="background-white">  <i>Created by </i>Ryota  </span>
+            <span class="background-white">  <i>Created by </i>りょうた  </span>
           </h1>
           <h1 v-else key="main" class="blue-green-test-title">
             <span class="background-white"> <i>あなたの青は本当に青ですか?</i> <i> </i> </span>
@@ -73,25 +73,24 @@
         <p>
           言語によって、色の名前は異なります。
           <a href="https://en.wikipedia.org/wiki/Sapir%E2%80%93Whorf_hypothesis" target="_blank"
-            >Language can affect how we memorize and name colors</a
-          >. This is a color naming test designed to measure your personal blue-green boundary.
+            >言語は、色の記憶や名前の付け方に影響を与えます。</a
+          > これは、あなたの青と緑の境界線を測定するためにデザインされたカラーネーミングテストです。
         </p>
        
         <p>
            
         </p>
-        <h2>How it works</h2>
+        <h2> </h2>
         <p>
-          This test uses an algorithm called <a href="https://github.com/learn-co-students/dsc-2-21-12-PE-MAP-online-ds-pt-112618">MAP estimation.</a> This algorithm cleverly chooses the next colors to show you, 
-          focusing on shades where you seem uncertain. To make the best results, it also randomly selects some colors and uses visual noise.
+           
         </p>
 
 
            
-        <h2>これを作ったのは誰?</h2>
+        <h2> </h2>
         <p>
-          川上涼大です。言語的相対論についての研究のためにこのサイトを作りました。
-           <a href="https://www.skillupai.com/blog/ai-knowledge/about-claude-3-5-sonnet/">Claude 3.5 Sonnet</a> and countless open source libraries from github. 
+           
+            
         </p>
         <h2> </h2>
         <p>
@@ -290,7 +289,7 @@ export default {
   max-height: 80%;
   overflow-y: auto;
   position: relative;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 0.9rem;
 }
 
@@ -337,5 +336,13 @@ input[type='text'].form-control {
 
 .reset-button:hover {
   background-color: #2a70c2;
+}
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+body {
+  font-family: 'Noto Sans JP', sans-serif !important;
 }
 </style>

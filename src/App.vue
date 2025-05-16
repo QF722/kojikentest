@@ -1,5 +1,7 @@
 <template>
-  <BlueGreenTest />
+  <div class="font-zen">
+    <BlueGreenTest />
+  </div>
 </template>
 
 <script>
@@ -22,6 +24,7 @@ body,
   width: 100%;
   height: 100%;
   overflow: hidden;
+  font-family: 'Zen Maru Gothic', sans-serif; /* fallback in case Tailwind misses */
 }
 
 #app {
