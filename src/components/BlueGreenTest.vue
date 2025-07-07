@@ -4,10 +4,10 @@
       <div v-if="!showResults" class="blue-green-test-content">
         <transition name="fade-up" mode="out-in">
           <h1 v-if="showInitialMessage" key="initial" class="blue-green-test-title">
-            <span class="background-white">  <i>Created by </i>りょうた  </span>
+            <span class="background-white">  <i>りょうたの色彩テスト </i> </span>
           </h1>
           <h1 v-else key="main" class="blue-green-test-title">
-            <span class="background-white"> <i>あなたの青は本当に青ですか?</i> <i> </i> </span>
+            <span class="background-white"> <i>この色は何色に見えますか？</i> <i> </i> </span>
           </h1>
         </transition>
       </div>
