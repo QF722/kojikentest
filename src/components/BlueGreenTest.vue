@@ -71,10 +71,10 @@
         <button @click="showAbout = false" class="close-button">&times;</button>
         <h2>このウェブサイトについて</h2>
         <p>
-          言語によって、色の名前は異なります。
-          <a href="https://en.wikipedia.org/wiki/Sapir%E2%80%93Whorf_hypothesis" target="_blank"
+          言語によって、ちいかわ？は異なります。
+          <a href="https://ja.wikipedia.org/wiki/%E8%A8%80%E8%AA%9E%E7%9A%84%E7%9B%B8%E5%AF%BE%E8%AB%96" target="_blank"
             >言語は、色の記憶や名前の付け方に影響を与えます。</a
-          > これは、あなたの青と緑の境界線を測定するためにデザインされたカラーネーミングテストです。
+          > このウェブサイトはあなたの青と緑の境界線を測定するために作ったカラーネーミングテストです。
         </p>
        
         <p>
